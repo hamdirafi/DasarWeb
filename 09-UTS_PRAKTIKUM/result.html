@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Result</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Result</h2>
+        <div id="output"></div>
+        <button onclick="goBack()">Back to Form</button>
+    </div>
+
+    <script>
+        // Ambil data dari localStorage
+        const data = JSON.parse(localStorage.getItem("userData"));
+
+        if (data) {
+            document.getElementById("output").innerHTML = `
+                <p><strong>Full Name:</strong> ${data.fullname}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Username:</strong> ${data.username}</p>
+                <p><strong>Password:</strong> ${data.password}</p>
+                <p><strong>Gender:</strong> ${data.gender}</p>
+                <p><strong>Birth Date:</strong> ${data.birthdate}</p>
+            `;
+        } else {
+            document.getElementById("output").innerHTML = "<p>No data found. Please fill out the form first.</p>";
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
